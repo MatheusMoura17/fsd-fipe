@@ -11,7 +11,7 @@ export const isFilterComplete = ({
   model,
   year,
 }: Partial<IVehicleFilter>) => {
-  return !!type && !!brand && !!model && year;
+  return Boolean(!!type && !!brand && !!model && !!year);
 };
 
 export const serializeFilter = (filter: IVehicleFilter) => {
