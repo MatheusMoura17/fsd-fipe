@@ -2,12 +2,12 @@ import {ITheme} from './types';
 
 export const common: Pick<ITheme, 'border' | 'spacing'> = {
   border: {
-    radius: '15px',
+    radius: '10px',
     width: '1px',
   },
   spacing: {
-    0: '2px',
-    1: '4px',
-    2: '8px',
+    0: '10px',
+    1: '12px',
+    2: '16px',
   },
 };

@@ -1,6 +1,9 @@
 export interface ITheme {
   colors: {
+    surface: string;
+    onSurface: string;
     font: string;
+    onPrimary: string;
     primary: string;
     border: string;
   };
