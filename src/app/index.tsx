@@ -1,16 +1,16 @@
 // Libs
-import { QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { RouterProvider } from 'react-router-dom'
+import {QueryClientProvider} from '@tanstack/react-query';
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
+import {RouterProvider} from 'react-router-dom';
 // Shared
-import { queryClient } from '@/shared/api/query-client'
+import {queryClient} from '@/shared/api/query-client';
 // Local
-import { router } from './router'
-import "./index.css"
+import {router} from './router';
+import './index.css';
 
-const rootElement = document.getElementById("root")!;
+const rootElement = document.getElementById('root')!;
 const root = createRoot(rootElement);
 
 root.render(
@@ -20,4 +20,4 @@ root.render(
       <ReactQueryDevtools initialIsOpen />
     </QueryClientProvider>
   </StrictMode>,
-)
+);
