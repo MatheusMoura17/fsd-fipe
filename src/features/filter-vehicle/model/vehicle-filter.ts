@@ -13,3 +13,7 @@ export const isFilterComplete = ({
 }: Partial<IVehicleFilter>) => {
   return !!type && !!brand && !!model && year;
 };
+
+export const serializeFilter = (filter: IVehicleFilter) => {
+  return `type=${filter.type}&brand=${filter.brand}&model=${filter.model}&year=${filter.year}`;
+};
