@@ -5,17 +5,22 @@ import {HomePage} from '@/pages/home';
 import {SearchPage} from '@/pages/search';
 import {VehicleValue} from '@/pages/vehicle-value';
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <HomePage />,
+    },
+    {
+      path: '/search',
+      element: <SearchPage />,
+    },
+    {
+      path: '/vehicle-value',
+      element: <VehicleValue />,
+    },
+  ],
   {
-    path: '/',
-    element: <HomePage />,
+    basename: import.meta.env.BASE_URL,
   },
-  {
-    path: '/search',
-    element: <SearchPage />,
-  },
-  {
-    path: '/vehicle-value',
-    element: <VehicleValue />,
-  },
-]);
+);
