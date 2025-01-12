@@ -8,6 +8,6 @@ export const Container = styled.main`
   width: 80%;
   max-width: 600px;
   margin: 0 auto;
-  background-color: ${({theme}) => theme.colors.surface[1]};
+  background-color: ${({theme}) => theme.colors.surface[0]};
   padding: ${({theme}) => theme.spacing[0]};
 `;

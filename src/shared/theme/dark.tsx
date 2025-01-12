@@ -6,9 +6,13 @@ export const darkTheme: ITheme = {
   colors: {
     surface: {
       0: '#1f2527',
-      1: '#1f2528',
+      1: '#191d1f',
+      2: '#141516',
     },
-    onSurface: '#fff',
+    onSurface: {
+      0: '#fff',
+      1: '#c6c6c6',
+    },
     font: '#050a0b',
     border: '#050a0b',
     primary: '#0091ff',

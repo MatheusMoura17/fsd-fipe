@@ -3,8 +3,12 @@ export interface ITheme {
     surface: {
       0: string;
       1: string;
+      2: string;
     };
-    onSurface: string;
+    onSurface: {
+      0: string;
+      1: string;
+    };
     font: string;
     onPrimary: string;
     primary: string;

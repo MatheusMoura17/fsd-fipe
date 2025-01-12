@@ -13,6 +13,6 @@ body,
     font-optical-sizing: auto;
     font-style: normal;
     background-color: ${({theme}) => theme.colors.surface[0]};
-    color: ${({theme}) => theme.colors.onSurface};
+    color: ${({theme}) => theme.colors.onSurface[0]};
 }
 `;

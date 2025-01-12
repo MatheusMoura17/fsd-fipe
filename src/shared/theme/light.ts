@@ -11,7 +11,11 @@ export const lightTheme: ITheme = {
     surface: {
       0: '#fffff',
       1: '#f1f1f1',
+      2: '#f2f2f2',
     },
-    onSurface: '#00000',
+    onSurface: {
+      0: '#00000',
+      1: '#060606',
+    },
   },
 };
