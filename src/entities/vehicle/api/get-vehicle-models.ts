@@ -2,15 +2,23 @@
 import {fipeClient} from '@/shared/api/fipeClient';
 // Local
 import {IVehicleModel} from '../model/vehicle-model';
-import {IVehicleModelDto} from './dtos/vehicle-model-dto';
-import {mapVehicleModel} from './mappers/map-vehicle';
+import {IGetVehicleModelsDto} from './dtos/get-vehicle-models-dto';
+import {mapVehicleModel, mapVehicleYear} from './mappers/map-vehicle';
+import {IVehicleYear} from '../model/vehicle-year';
+
+interface IGetVehicleModelsResult {
+  years: IVehicleYear[];
+  models: IVehicleModel[];
+}
 
 export const getVehicleModels = async (
   vehicleTypeId: string,
   vehicleBrandId: string,
-): Promise<IVehicleModel[]> => {
-  const response = await fipeClient.get<IVehicleModelDto[]>(
+): Promise<IGetVehicleModelsResult> => {
+  const response = await fipeClient.get<IGetVehicleModelsDto>(
     `/${vehicleTypeId}/marcas/${vehicleBrandId}/modelos`,
   );
-  return response.data.map(mapVehicleModel);
+  const years = response.data.anos.map(mapVehicleYear);
+  const models = response.data.modelos.map(mapVehicleModel);
+  return {years, models};
 };

@@ -9,4 +9,12 @@ export const ButtonContainer = styled.button`
   border: none;
   outline: none;
   min-width: 300px;
+  width: 100%;
+
+  &:disabled {
+    background-color: ${({theme}) => theme.colors.surface[2]};
+    color: ${({theme}) => theme.colors.onSurface[0]};
+    opacity: 0.5;
+    cursor: no-drop;
+  }
 `;
