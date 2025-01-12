@@ -3,6 +3,7 @@ import {createBrowserRouter} from 'react-router-dom';
 // Pages
 import {HomePage} from '@/pages/home';
 import {SearchPage} from '@/pages/search';
+import {VehicleValue} from '@/pages/vehicle-value';
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '/vehicle-value',
-    element: <SearchPage />,
+    element: <VehicleValue />,
   },
 ]);
