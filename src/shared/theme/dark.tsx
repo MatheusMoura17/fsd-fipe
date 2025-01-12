@@ -4,11 +4,14 @@ import {ITheme} from './types';
 export const darkTheme: ITheme = {
   ...common,
   colors: {
-    surface: '#31393C',
+    surface: {
+      0: '#1f2527',
+      1: '#1f2528',
+    },
     onSurface: '#fff',
-    font: '#ecf0f1',
-    border: '#2c3e50',
-    primary: '#2176FF',
-    onPrimary: '#000',
+    font: '#050a0b',
+    border: '#050a0b',
+    primary: '#0091ff',
+    onPrimary: '#050a0b',
   },
 };

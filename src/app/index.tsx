@@ -10,7 +10,6 @@ import {queryClient} from '@/shared/api/query-client';
 import {darkTheme, GlobalStyles} from '@/shared/theme';
 // Local
 import {router} from './router';
-import './index.css';
 
 const rootElement = document.getElementById('root')!;
 const root = createRoot(rootElement);
