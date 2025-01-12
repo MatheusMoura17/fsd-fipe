@@ -10,9 +10,9 @@ export const getVehicleValue = async (
   vehicleBrandId: string,
   vehicleModelId: string,
   vehicleYearId: string,
-): Promise<IVehicleValue[]> => {
-  const response = await fipeClient.get<IVehicleValueDto[]>(
+): Promise<IVehicleValue> => {
+  const response = await fipeClient.get<IVehicleValueDto>(
     `/${vehicleTypeId}/marcas/${vehicleBrandId}/modelos/${vehicleModelId}/anos/${vehicleYearId}`,
   );
-  return response.data.map(mapVehicleValue);
+  return mapVehicleValue(response.data);
 };
