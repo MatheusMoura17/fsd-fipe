@@ -29,6 +29,12 @@ export const DropdownButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &:disabled {
+    border: ${({theme}) =>
+      `${theme.border.width} solid ${theme.colors.border}`};
+    opacity: 0.5;
+  }
 `;
 
 export const DropdownModal = styled.div`

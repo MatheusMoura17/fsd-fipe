@@ -17,6 +17,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({
   id,
   title = 'Select',
   data,
+  disabled,
   selectedId,
   onSelect,
 }) => {
@@ -49,6 +50,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({
   return (
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton
+        disabled={disabled}
         id={id}
         aria-label="Toggle dropdown"
         aria-haspopup="true"

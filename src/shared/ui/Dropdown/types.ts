@@ -8,5 +8,6 @@ export interface IDropdownProps {
   title?: string;
   data: IDropdownItem[];
   selectedId?: string;
+  disabled?: boolean;
   onSelect?: (id: string) => void;
 }
