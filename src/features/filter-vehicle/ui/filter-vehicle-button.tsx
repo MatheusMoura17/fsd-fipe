@@ -1,5 +1,5 @@
 // Shared
-import {Button} from '@/shared/ui/Button';
+import {Button} from '@/shared/ui/button';
 // Local
 import {useVehicleFilterStore} from '../api/use-vehicle-filter-store';
 import {useMemo} from 'react';

@@ -5,7 +5,7 @@ interface OutsideClickHandlerProps {
   handler: () => void;
 }
 
-const useOutsideClick = ({ref, handler}: OutsideClickHandlerProps) => {
+export const useOutsideClick = ({ref, handler}: OutsideClickHandlerProps) => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -20,5 +20,3 @@ const useOutsideClick = ({ref, handler}: OutsideClickHandlerProps) => {
     };
   }, [ref, handler]);
 };
-
-export default useOutsideClick;

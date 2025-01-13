@@ -1,5 +1,5 @@
 // Shared
-import {fipeClient} from '@/shared/api/fipeClient';
+import {fipeClient} from '@/shared/api';
 // Local
 import {IVehicleValue} from '../model/vehicle-value';
 import {IVehicleValueDto} from './dtos/vehicle-value-dto';

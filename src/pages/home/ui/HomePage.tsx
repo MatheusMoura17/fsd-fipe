@@ -1,8 +1,8 @@
 // Libs
 import {useNavigate} from 'react-router-dom';
 // Shared
-import {Button} from '@/shared/ui/Button';
-import {Layout} from '@/shared/ui/Layout';
+import {Button} from '@/shared/ui/button';
+import {Layout} from '@/shared/ui/layout';
 
 export const HomePage = () => {
   const navigate = useNavigate();

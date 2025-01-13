@@ -2,8 +2,8 @@ import {useQuery} from '@tanstack/react-query';
 // features
 import {useVehicleFilterSearchParamsUrl} from '@/features/filter-vehicle';
 // shared
-import {Layout} from '@/shared/ui/Layout';
-import {Button} from '@/shared/ui/Button';
+import {Layout} from '@/shared/ui/layout';
+import {Button} from '@/shared/ui/button';
 // entities
 import {getVehicleValue, VehicleValueCard} from '@/entities/vehicle';
 import {useNavigate} from 'react-router-dom';

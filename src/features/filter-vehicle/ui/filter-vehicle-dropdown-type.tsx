@@ -4,8 +4,8 @@ import {useMemo} from 'react';
 // Entities
 import {getVehicleTypes} from '@/entities/vehicle';
 // Shared
-import Dropdown from '@/shared/ui/Dropdown';
-import {IDropdownItem} from '@/shared/ui/Dropdown/types';
+import {Dropdown, IDropdownItem} from '@/shared/ui/dropdown';
+// Local
 import {useVehicleFilterStore} from '../api/use-vehicle-filter-store';
 
 export const FilterVehicleDropdownType = () => {

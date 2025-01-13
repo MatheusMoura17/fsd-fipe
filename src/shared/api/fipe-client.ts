@@ -1,7 +1,6 @@
 import axios from 'axios';
-import {API_URL as FIPE_API_URL} from '../config.ts/backend';
 
 export const fipeClient = axios.create({
-  baseURL: FIPE_API_URL,
+  baseURL: 'https://parallelum.com.br/fipe/api/v1',
   timeout: 30000,
 });

@@ -7,7 +7,7 @@ import {
   serializeFilter,
 } from '@/features/filter-vehicle';
 // Shared
-import {Layout} from '@/shared/ui/Layout';
+import {Layout} from '@/shared/ui/layout';
 
 export const SearchPage = () => {
   const navigate = useNavigate();

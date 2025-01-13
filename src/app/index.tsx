@@ -6,7 +6,7 @@ import {createRoot} from 'react-dom/client';
 import {RouterProvider} from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
 // Shared
-import {queryClient} from '@/shared/api/queryClient';
+import {queryClient} from '@/shared/api';
 import {darkTheme, GlobalStyles} from '@/shared/theme';
 // Local
 import {router} from './router';

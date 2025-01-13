@@ -1,5 +1,5 @@
 // Shared
-import {fipeClient} from '@/shared/api/fipeClient';
+import {fipeClient} from '@/shared/api';
 // Local
 import {IVehicleYear} from '../model/vehicle-year';
 import {IVehicleYearDto} from './dtos/vehicle-year-dto';
