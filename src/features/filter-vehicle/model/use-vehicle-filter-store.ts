@@ -12,9 +12,35 @@ interface IVehicleFilterStore {
 
 export const useVehicleFilterStore = create<IVehicleFilterStore>()(set => ({
   filter: {},
-  setType: type => set(state => ({filter: {...state.filter, type}})),
-  setBrand: brand => set(state => ({filter: {...state.filter, brand}})),
-  setModel: model => set(state => ({filter: {...state.filter, model}})),
-  setYear: year => set(state => ({filter: {...state.filter, year}})),
+  setType: type =>
+    set(() => ({
+      filter: {
+        type,
+      },
+    })),
+  setBrand: brand =>
+    set(state => ({
+      filter: {
+        type: state.filter.type,
+        brand,
+      },
+    })),
+  setModel: model =>
+    set(state => ({
+      filter: {
+        type: state.filter.type,
+        brand: state.filter.brand,
+        model,
+      },
+    })),
+  setYear: year =>
+    set(state => ({
+      filter: {
+        type: state.filter.type,
+        brand: state.filter.brand,
+        model: state.filter.model,
+        year,
+      },
+    })),
   setFilter: data => set(state => ({filter: {...state.filter, ...data}})),
 }));

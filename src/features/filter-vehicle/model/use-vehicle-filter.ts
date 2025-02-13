@@ -46,10 +46,10 @@ export const useVehicleFilter = () => {
 
   const isLoading = useMemo(() => {
     return (
-      typesQuery.isPending ||
-      brandsQuery.isPending ||
-      modelsQuery.isPending ||
-      yearsQuery.isPending
+      typesQuery.isLoading ||
+      brandsQuery.isLoading ||
+      modelsQuery.isLoading ||
+      yearsQuery.isLoading
     );
   }, [typesQuery, brandsQuery, modelsQuery, yearsQuery]);
 
