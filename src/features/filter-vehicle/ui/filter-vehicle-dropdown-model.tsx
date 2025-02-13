@@ -1,29 +1,20 @@
-// Libs
-import {useQuery} from '@tanstack/react-query';
 import {useMemo} from 'react';
-// Entities
-import {getVehicleModels} from '@/entities/vehicle';
 // Shared
 import {Dropdown, IDropdownItem} from '@/shared/ui/dropdown';
 // Local
-import {useVehicleFilterStore} from '../api/use-vehicle-filter-store';
+import {useVehicleFilter} from '../model/use-vehicle-filter';
 
 export const FilterVehicleDropdownModel = () => {
-  const {filter, setModel} = useVehicleFilterStore();
-
-  const {isPending, data, error} = useQuery({
-    queryKey: ['filter-vehicle-dropdown-models', filter?.type, filter?.brand],
-    queryFn: () => getVehicleModels(filter.type!, filter.brand!),
-    enabled: !!filter?.type && !!filter?.brand,
-  });
+  const {filter, modelList, isModelsEnabled, isLoading, setModel} =
+    useVehicleFilter();
 
   const dropdownData = useMemo(
     () =>
-      (data?.models || [])?.map<IDropdownItem>(vehicleModel => ({
+      modelList.map<IDropdownItem>(vehicleModel => ({
         id: vehicleModel.code.toString(),
         title: vehicleModel.title,
       })),
-    [data],
+    [modelList],
   );
 
   return (
@@ -31,7 +22,7 @@ export const FilterVehicleDropdownModel = () => {
       id="dropdown-vehicle-model"
       selectedId={filter.model}
       title="Escolha o modelo"
-      disabled={!filter.type || !filter.brand || isPending || !!error}
+      disabled={!isModelsEnabled || isLoading}
       onSelect={setModel}
       data={dropdownData}
     />
