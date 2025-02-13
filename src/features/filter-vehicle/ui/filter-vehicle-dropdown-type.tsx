@@ -22,7 +22,7 @@ export const FilterVehicleDropdownType = () => {
     <Dropdown
       id="dropdown-vehicle-type"
       selectedId={filter.type}
-      disabled={!isTypesEnabled || !!isLoading}
+      disabled={!isTypesEnabled || isLoading}
       onSelect={setType}
       data={dropdownData}
     />

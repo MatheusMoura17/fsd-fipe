@@ -1,65 +1,42 @@
-import {useQuery} from '@tanstack/react-query';
-// features
-import {useVehicleFilter} from '@/features/filter-vehicle';
+// Libs
+import {useNavigate} from 'react-router-dom';
 // shared
 import {Layout} from '@/shared/ui/layout';
 import {Button} from '@/shared/ui/button';
 // entities
-import {getVehicleValue, VehicleValueCard} from '@/entities/vehicle';
-import {useNavigate, useSearchParams} from 'react-router-dom';
-import {useEffect} from 'react';
+import {VehicleValueCard} from '@/entities/vehicle';
+import {useVehicleValue} from '../model/useVehicleValue';
 
 export const VehicleValue = () => {
-  const [params] = useSearchParams();
-  const {loadFromSearchParams} = useVehicleFilter();
+  const {vehicle, isLoading, error} = useVehicleValue();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    loadFromSearchParams(params);
-  }, [loadFromSearchParams, params]);
-
-  const {isPending, data, error} = useQuery({
-    queryKey: ['vehicle-value', fitlerString],
-    queryFn: async () => {
-      return await getVehicleValue(
-        filter.type!,
-        filter.brand!,
-        filter.model!,
-        filter.year!,
-      );
-    },
-    enabled: isComplete,
-  });
-
-  const handleClick = () => {
+  const handleClickBack = () => {
     navigate('/search');
   };
 
-  const backButton = <Button onClick={handleClick}>Nova busca</Button>;
+  const backButton = <Button onClick={handleClickBack}>Nova busca</Button>;
 
-  if (isPending) {
+  if (isLoading) {
     return <Layout title="Carregando...">por favor aguarde um pouco</Layout>;
   }
 
   if (error) {
-    return <Layout title="Erro">Falha ao buscar veiculo {backButton}</Layout>;
-  }
-
-  if (!isComplete) {
     return (
-      <Layout title="Filtro incompleto">
-        Parametros insuficientes para busca
-        {backButton}
+      <Layout title="Erro">
+        Erro: {error.message} {backButton}
       </Layout>
     );
   }
 
-  if (data) {
+  if (vehicle) {
     return (
       <Layout title={'Resultado da busca'}>
-        <VehicleValueCard data={data} />
+        <VehicleValueCard data={vehicle} />
         {backButton}
       </Layout>
     );
+  } else {
+    return <Layout title="Erro">Veiculo não encontrado! {backButton}</Layout>;
   }
 };
