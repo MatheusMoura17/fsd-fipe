@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.1",
   "type": "module",
+  "homepage": "/fsd-fipe/#",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build --base=/fsd-fipe/",
