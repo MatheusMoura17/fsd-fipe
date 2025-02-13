@@ -1,36 +1,28 @@
 // Libs
-import {useQuery} from '@tanstack/react-query';
 import {useMemo} from 'react';
-// Entities
-import {getVehicleTypes} from '@/entities/vehicle';
 // Shared
 import {Dropdown, IDropdownItem} from '@/shared/ui/dropdown';
 // Local
-import {useVehicleFilterStore} from '../api/use-vehicle-filter-store';
+import {useVehicleFilter} from '../model/use-vehicle-filter';
 
 export const FilterVehicleDropdownType = () => {
-  const {filter, setType} = useVehicleFilterStore();
-
-  const {isPending, data, error} = useQuery({
-    queryKey: ['filter-vehicle-dropdown-type'],
-    queryFn: getVehicleTypes,
-  });
+  const {filter, isTypesEnabled, typeList, isLoading, setType} =
+    useVehicleFilter();
 
   const dropdownData = useMemo(
     () =>
-      (data || [])?.map<IDropdownItem>(vehicleType => ({
+      (typeList || [])?.map<IDropdownItem>(vehicleType => ({
         id: vehicleType.id,
         title: vehicleType.title,
       })),
-    [data],
+    [typeList],
   );
 
   return (
     <Dropdown
       id="dropdown-vehicle-type"
       selectedId={filter.type}
-      title="Escolha um tipo de veiculo"
-      disabled={isPending || !!error}
+      disabled={!isTypesEnabled || !!isLoading}
       onSelect={setType}
       data={dropdownData}
     />

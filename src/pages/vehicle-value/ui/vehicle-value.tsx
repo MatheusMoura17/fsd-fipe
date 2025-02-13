@@ -1,16 +1,22 @@
 import {useQuery} from '@tanstack/react-query';
 // features
-import {useVehicleFilterSearchParamsUrl} from '@/features/filter-vehicle';
+import {useVehicleFilter} from '@/features/filter-vehicle';
 // shared
 import {Layout} from '@/shared/ui/layout';
 import {Button} from '@/shared/ui/button';
 // entities
 import {getVehicleValue, VehicleValueCard} from '@/entities/vehicle';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useSearchParams} from 'react-router-dom';
+import {useEffect} from 'react';
 
 export const VehicleValue = () => {
-  const {filter, fitlerString, isComplete} = useVehicleFilterSearchParamsUrl();
+  const [params] = useSearchParams();
+  const {loadFromSearchParams} = useVehicleFilter();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    loadFromSearchParams(params);
+  }, [loadFromSearchParams, params]);
 
   const {isPending, data, error} = useQuery({
     queryKey: ['vehicle-value', fitlerString],

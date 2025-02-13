@@ -1,27 +1,26 @@
+// Libs
+import {useNavigate} from 'react-router-dom';
 // Shared
 import {Button} from '@/shared/ui/button';
 // Local
-import {useVehicleFilterStore} from '../api/use-vehicle-filter-store';
-import {useMemo} from 'react';
-import {isFilterComplete, IVehicleFilter} from '../model/vehicle-filter';
+import {useVehicleFilter} from '../model/use-vehicle-filter';
 
 interface IFilterVehicleButtonProps {
-  onClick?: (filter: IVehicleFilter) => void;
+  destination: string;
 }
 
 export const FilterVehicleButton: React.FC<IFilterVehicleButtonProps> = ({
-  onClick,
+  destination,
 }) => {
-  const {filter} = useVehicleFilterStore();
-
-  const isEnabled = useMemo(() => isFilterComplete(filter), [filter]);
+  const navigate = useNavigate();
+  const {isFilterComplete, filterSearchParams} = useVehicleFilter();
 
   const handleClick = () => {
-    onClick?.(filter as IVehicleFilter);
+    navigate(`${destination}?${filterSearchParams.toString()}`);
   };
 
   return (
-    <Button onClick={handleClick} disabled={!isEnabled}>
+    <Button onClick={handleClick} disabled={!isFilterComplete}>
       Buscar
     </Button>
   );

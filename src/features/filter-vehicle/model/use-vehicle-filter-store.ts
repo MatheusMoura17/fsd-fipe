@@ -7,6 +7,7 @@ interface IVehicleFilterStore {
   setBrand: (brand: string) => void;
   setModel: (model: string) => void;
   setYear: (year: string) => void;
+  setFilter: (data: Partial<IVehicleFilter>) => void;
 }
 
 export const useVehicleFilterStore = create<IVehicleFilterStore>()(set => ({
@@ -15,4 +16,5 @@ export const useVehicleFilterStore = create<IVehicleFilterStore>()(set => ({
   setBrand: brand => set(state => ({filter: {...state.filter, brand}})),
   setModel: model => set(state => ({filter: {...state.filter, model}})),
   setYear: year => set(state => ({filter: {...state.filter, year}})),
+  setFilter: data => set(state => ({filter: {...state.filter, ...data}})),
 }));
