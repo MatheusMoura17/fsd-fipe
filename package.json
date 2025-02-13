@@ -3,10 +3,9 @@
   "private": true,
   "version": "1.0.1",
   "type": "module",
-  "homepage": "https://matheusmoura17.github.io/fsd-fipe/",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "vite --base='/fsd-fipe/'",
+    "build": "tsc -b && vite build --base='/fsd-fipe/'",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
