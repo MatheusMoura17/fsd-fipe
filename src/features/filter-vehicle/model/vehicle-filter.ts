@@ -5,15 +5,11 @@ export interface IVehicleFilter {
   year: string;
 }
 
-export const isFilterComplete = ({
+export const verifyFilterIsComplete = ({
   type,
   brand,
   model,
   year,
 }: Partial<IVehicleFilter>) => {
   return Boolean(!!type && !!brand && !!model && !!year);
-};
-
-export const serializeFilter = (filter: IVehicleFilter) => {
-  return `type=${filter.type}&brand=${filter.brand}&model=${filter.model}&year=${filter.year}`;
 };
