@@ -1,29 +1,21 @@
 // Libs
-import {useQuery} from '@tanstack/react-query';
 import {useMemo} from 'react';
-// Entities
-import {getVehicleModels} from '@/entities/vehicle';
 // Shared
 import {Dropdown, IDropdownItem} from '@/shared/ui/dropdown';
 // Local
-import {useVehicleFilterStore} from '../api/use-vehicle-filter-store';
+import {useVehicleFilter} from '../model/use-vehicle-filter';
 
 export const FilterVehicleDropdownYear = () => {
-  const {filter, setYear} = useVehicleFilterStore();
-
-  const {isPending, data, error} = useQuery({
-    queryKey: ['filter-vehicle-dropdown-models', filter?.type, filter?.brand],
-    queryFn: () => getVehicleModels(filter.type!, filter.brand!),
-    enabled: !!filter?.type && !!filter?.brand,
-  });
+  const {filter, setYear, isYearsEnabled, isLoading, yearList} =
+    useVehicleFilter();
 
   const dropdownData = useMemo(
     () =>
-      (data?.years || [])?.map<IDropdownItem>(vehicleYear => ({
+      yearList.map<IDropdownItem>(vehicleYear => ({
         id: vehicleYear.code.toString(),
         title: vehicleYear.title,
       })),
-    [data],
+    [yearList],
   );
 
   return (
@@ -31,7 +23,7 @@ export const FilterVehicleDropdownYear = () => {
       id="dropdown-vehicle-year"
       title="Escolha o ano"
       selectedId={filter.year}
-      disabled={!filter.type || !filter.brand || isPending || !!error}
+      disabled={!isYearsEnabled || isLoading}
       onSelect={setYear}
       data={dropdownData}
     />
